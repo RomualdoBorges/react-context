@@ -1,0 +1,51 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+.iconButton {
+  left: 20px;
+  position: absolute;
+  top: 15px;
+}
+
+.titulo {
+  font-size: 32px;
+  color: #464646;
+}
+
+.pagamentoContainer {
+  width: 100%;
+}
+
+.totalContainer {
+  margin-top: 20px;
+}
+
+.totalContainer div {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.totalContainer div h2 {
+  color: #464646;
+  font-size: 32px;
+}
+
+.totalContainer div span {
+  font-size: 30px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+    width: 50%;
+  }
+}

@@ -1,0 +1,23 @@
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+}
+
+.container div {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
+
+.container div p {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px 0 0 5px;
+}
+
+.container div p span {
+  font-size: 16px;
+}
