@@ -1,9 +1,16 @@
 import React from "react";
 import styles from "./Produto.module.css";
 import { Card, IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import useCarrinhoContext from "hook/useCarrinhoContext";
 
-function Produto({ nome, foto, valor }) {
+function Produto({ nome, foto, valor, id, unidade }) {
+  const { carrinho, adicionarProduto } = useCarrinhoContext();
+  const produtoNoCarrinho = carrinho.find(
+    (itemDoCarrinho) => itemDoCarrinho.id === id
+  );
+
   return (
     <Card className={styles.container}>
       <div>
@@ -15,6 +22,14 @@ function Produto({ nome, foto, valor }) {
       <div>
         <IconButton color="secondary">
           <RemoveIcon />
+        </IconButton>
+        {produtoNoCarrinho?.quantidade || 0}
+        <IconButton
+          onClick={() => {
+            adicionarProduto({ nome, foto, id, valor });
+          }}
+        >
+          <AddIcon />
         </IconButton>
       </div>
     </Card>
