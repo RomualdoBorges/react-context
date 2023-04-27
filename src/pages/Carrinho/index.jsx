@@ -9,9 +9,12 @@ import {
   Snackbar,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import useCarrinhoContext from "hook/useCarrinhoContext";
+import Produto from "components/Produto";
 
 export default function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const { carrinho } = useCarrinhoContext();
 
   return (
     <main className={styles.container}>
@@ -19,6 +22,9 @@ export default function Carrinho() {
         <ArrowBackIcon />
       </IconButton>
       <h2 className={styles.titulo}>Carrinho</h2>
+      {carrinho.map((produto) => (
+        <Produto {...produto} key={produto.id} />
+      ))}
       <FormControl className={styles.pagamentoContainer}>
         <InputLabel>Forma de pagamento</InputLabel>
       </FormControl>
