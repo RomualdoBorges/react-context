@@ -6,27 +6,49 @@ import {
   FormControl,
   IconButton,
   InputLabel,
+  MenuItem,
+  Select,
   Snackbar,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useCarrinhoContext from "hook/useCarrinhoContext";
 import Produto from "components/Produto";
+import { useNavigate } from "react-router-dom";
+import { PagamentoContext } from "common/context/Pagamento";
 
 export default function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const { carrinho } = useCarrinhoContext();
+  const { formaPagamento, setFormaPagamento, tiposPagamento } =
+    React.useContext(PagamentoContext);
+  const navigate = useNavigate();
 
   return (
     <main className={styles.container}>
-      <IconButton className={styles.iconButton}>
+      <IconButton
+        className={styles.iconButton}
+        onClick={() => navigate("/feira")}
+      >
         <ArrowBackIcon />
       </IconButton>
+
       <h2 className={styles.titulo}>Carrinho</h2>
       {carrinho.map((produto) => (
         <Produto {...produto} key={produto.id} />
       ))}
       <FormControl className={styles.pagamentoContainer}>
         <InputLabel>Forma de pagamento</InputLabel>
+        <Select
+          variant="standard"
+          value={formaPagamento.id}
+          onChange={(event) => setFormaPagamento(event.target.value)}
+        >
+          {tiposPagamento.map((pagamento) => (
+            <MenuItem value={pagamento.id} key={pagamento.id}>
+              {pagamento.nome}
+            </MenuItem>
+          ))}
+        </Select>
       </FormControl>
       <section className={styles.totalContainer}>
         <div>

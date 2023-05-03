@@ -7,6 +7,7 @@ import Feira from "pages/Feira";
 import Carrinho from "pages/Carrinho";
 import { UsuarioProvider } from "common/context/Usuario";
 import { CarrinhoProvider } from "common/context/Carrinho";
+import { PagamentoProvider } from "common/context/Pagamento";
 
 function AppRoutes() {
   const theme = useCustomTheme();
@@ -19,7 +20,14 @@ function AppRoutes() {
             <Routes>
               <Route exact path="/" element={<Login />} />
               <Route path="/feira" element={<Feira />} />
-              <Route path="/carrinho" element={<Carrinho />} />
+              <Route
+                path="/carrinho"
+                element={
+                  <PagamentoProvider>
+                    <Carrinho />
+                  </PagamentoProvider>
+                }
+              />
             </Routes>
           </BrowserRouter>
         </CarrinhoProvider>
