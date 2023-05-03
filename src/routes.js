@@ -16,20 +16,15 @@ function AppRoutes() {
     <ThemeProvider theme={theme}>
       <UsuarioProvider>
         <CarrinhoProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route exact path="/" element={<Login />} />
-              <Route path="/feira" element={<Feira />} />
-              <Route
-                path="/carrinho"
-                element={
-                  <PagamentoProvider>
-                    <Carrinho />
-                  </PagamentoProvider>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
+          <PagamentoProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route exact path="/" element={<Login />} />
+                <Route path="/feira" element={<Feira />} />
+                <Route path="/carrinho" element={<Carrinho />} />
+              </Routes>
+            </BrowserRouter>
+          </PagamentoProvider>
         </CarrinhoProvider>
       </UsuarioProvider>
     </ThemeProvider>

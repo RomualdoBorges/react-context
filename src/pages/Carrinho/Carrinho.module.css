@@ -8,10 +8,9 @@
   position: relative;
 }
 
-.iconButton {
-  left: 20px;
-  position: absolute;
-  top: 15px;
+.topbar {
+  display: flex;
+  gap: 200px;
 }
 
 .titulo {
