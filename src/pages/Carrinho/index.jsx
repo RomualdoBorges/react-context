@@ -14,13 +14,13 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useCarrinhoContext from "hook/useCarrinhoContext";
 import Produto from "components/Produto";
 import { useNavigate } from "react-router-dom";
-import { PagamentoContext } from "common/context/Pagamento";
+import { usePagamentoContext } from "hook/usePagamentoContext";
 
 export default function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const { carrinho } = useCarrinhoContext();
-  const { formaPagamento, setFormaPagamento, tiposPagamento } =
-    React.useContext(PagamentoContext);
+  const { formaPagamento, mudarFormaPagamento, tiposPagamento } =
+    usePagamentoContext();
   const navigate = useNavigate();
 
   return (
@@ -41,7 +41,7 @@ export default function Carrinho() {
         <Select
           variant="standard"
           value={formaPagamento.id}
-          onChange={(event) => setFormaPagamento(event.target.value)}
+          onChange={(event) => mudarFormaPagamento(event.target.value)}
         >
           {tiposPagamento.map((pagamento) => (
             <MenuItem value={pagamento.id} key={pagamento.id}>
